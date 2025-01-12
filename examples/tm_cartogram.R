@@ -1,3 +1,5 @@
+library(tmap)
+
 Africa = World[World$continent == "Africa", ]
 
 #step3 L50: to do: trans.isglobal needs another variant trans.apply_from_here
