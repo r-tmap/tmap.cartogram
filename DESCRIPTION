@@ -1,0 +1,22 @@
+Package: tmap.cartogram
+License: GPL-3
+Title: Extension for 'tmap': cartograms can be created
+Type: Package
+LazyData: true
+Authors@R: c(
+	person("Martijn", "Tennekes", email = "mtennekes@gmail.com", role = c("aut", "cre"))
+	)
+Description: New layer functions are available for tmap that create various types ofcartograms.
+Version: 0.1
+Date: 2025-01-12
+Encoding: UTF-8
+Depends:
+    R (>= 3.5.0),
+Imports:
+    tmap (>= 3.99),
+    rlang,
+    sf,
+    cartogram
+URL: https://github.com/r-tmap/tmap.cartogram
+BugReports: https://github.com/r-tmap/tmap.cartogram/issues
+RoxygenNote: 7.3.2
