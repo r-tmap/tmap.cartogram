@@ -1,0 +1,120 @@
+---
+title: "Cartograms"
+output: 
+  bookdown::html_vignette2:
+bibliography: '`r system.file("tmap.bib", package="tmap")`'
+csl: "`r system.file('ieee.csl', package = 'tmap')`"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.width = 8,
+  comment = "#>"
+)
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(more, x[lines], more)
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
+```
+
+
+```{r, echo = FALSE, message = FALSE}
+library(tmap)
+library(tmap.cartogram)
+tmap_options(scale = 0.75)
+```
+
+
+
+## Cartogram
+
+Areal regions are distorted such that the obtained area sizes are proportional to a quantitative variable (Gastner and Newman 2004; Nusrat and Kobourov 2016).
+In a **contiguous area cartogram**, the shapes of the polygons are distorted, where the neighborhood relationships between them are preserved as much as possible. In a **non-contiguous cartogram**, the polygons are only resized. 
+
+Categorical maps and choropleths of ratio variables are often misleading, since these maps do not take the population distribution into account properly. Densely populated regions are often underemphasized by their small areas. The project http://www.worldmapper.org/ contains a couple
+of illustrative examples, for instance a distorted world map in which the areas of the countries are proportional to their population sizes (Barford and Dorling 2008).
+
+## Important (!)
+
+In order to work well, it is strongly recommended to use a projected [CRS (map projection)](https://r-tmap.github.io/tmap/articles/foundations_crs) that is (approximately) equal-area. Why? Because the cartograms transformation require that that the area of polygons is approximately proportional to the real areas. This is not the case for the mercator projection (plain lat/lon coordinates).
+
+For these examples we use the Robinson projection. If you are unsure which to use, set `crs = "auto"` which enables a (work-in-progress) automatic map projection recommendation.
+
+In addition, this crs must be set in [`tm_shape()`](https://r-tmap.github.io/tmap/reference/tm_shape.html), and not afterwards via [`tm_crs()`](https://r-tmap.github.io/tmap/reference/tm_crs.html). Why? Because the former ensures that the transformation is applied in the correct CRS, whereas the latter is used for plotting only.
+
+Finally, we recommend to disable basemaps in view mode. Not only because the polygons will be distorted (and therefore will not be consistent with the basemaps), but because basemaps are usually rendered in the (pseudo) mercator projection. By default a spatial object will keep its projected CRS when basemaps are disabled.
+
+## Contiguous cartograms
+
+```{r, fig.heigt=6}
+Africa = World[World$continent == "Africa", ]
+
+tm_shape(Africa, crs = "+proj=robin") +
+	tm_cartogram(size = "pop_est", options = opt_tm_cartogram(itermax = 15)) +
+	tm_text("name")
+```
+
+
+```{r, fig.heigt=6}
+tm_shape(Africa, crs = "+proj=robin") +
+	tm_cartogram_ncont(size = "pop_est", options = opt_tm_cartogram_ncont()) +
+	tm_text("name")
+```
+
+## Non-contiguous cartograms
+
+
+```{r, fig.height=3.5}
+tm_shape(World, crs = "+proj=robin") +
+	tm_polygons() +
+	tm_cartogram_ncont(size = "pop_est", fill = "yellow")
+```
+
+## Dorlin cartograms
+
+```{r, fig.height=3.5}
+tm_shape(World, crs = "+proj=robin") +
+	tm_polygons() +
+	tm_cartogram_dorling(size = "pop_est", fill = "yellow")
+```
+
+## View mode
+
+These maps are also available interactively. 
+As noted above the trick in tmap is to disable basemaps. This can be done with `tm_basemap(NULL)`:
+
+```{r}
+tmap_mode("view")
+tm_shape(World, crs = "+proj=robin") +
+	tm_polygons() +
+	tm_cartogram_ncont(size = "pop_est", fill = "yellow") +
+tm_basemap(NULL)
+```
+
+
+```{r}
+tm_shape(World, crs = "+proj=robin") +
+	tm_polygons() +
+	tm_cartogram_dorling(size = "pop_est", fill = "yellow") +
+tm_basemap(NULL)
+```

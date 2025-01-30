@@ -1,0 +1,27 @@
+url: https://r-tmap.github.io/tmap/
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#5f8640"
+
+# figures:
+  dev: ragg::agg_png
+  dpi: 300
+
+development:
+  version_tooltip: "tmap.cartogram documentation"
+
+reference:
+
+- title: Create a cartogram
+  contents:
+  - tm_cartogram
+
+navbar:
+  structure:
+    left:  [reference, cartograms, news]
+  components:
+    home: ~
+    cartograms:
+      text: Cartograms
+      href: articles/cartograms
