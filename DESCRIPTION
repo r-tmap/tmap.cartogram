@@ -16,6 +16,11 @@ Imports:
     tmap (>= 3.99),
     sf,
     cartogram
+Suggests:
+    knitr
+Config/Needs/check: Nowosad/spDataLarge, lwgeom
+Config/Needs/coverage: Nowosad/spDataLarge, lwgeom
+Config/Needs/website: bookdown, rmarkdown
 URL: https://github.com/r-tmap/tmap.cartogram, https://r-tmap.github.io/tmap.cartogram/
 BugReports: https://github.com/r-tmap/tmap.cartogram/issues
 RoxygenNote: 7.3.2
