@@ -16,6 +16,6 @@ Imports:
     tmap (>= 3.99),
     sf,
     cartogram
-URL: https://github.com/r-tmap/tmap.cartogram
+URL: https://github.com/r-tmap/tmap.cartogram, https://r-tmap.github.io/tmap.cartogram/
 BugReports: https://github.com/r-tmap/tmap.cartogram/issues
 RoxygenNote: 7.3.2

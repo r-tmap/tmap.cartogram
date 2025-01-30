@@ -1,4 +1,4 @@
-url: https://r-tmap.github.io/tmap/
+url: https://r-tmap.github.io/tmap.cartogram/
 template:
   bootstrap: 5
   bslib:
