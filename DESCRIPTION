@@ -1,6 +1,6 @@
 Package: tmap.cartogram
 License: GPL-3
-Title: Extension to 'tmap' for creating cartograms
+Title: Extension to 'tmap' for Creating Cartograms
 Type: Package
 LazyData: true
 Authors@R: c(
