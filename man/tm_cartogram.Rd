@@ -71,3 +71,20 @@ See [tmap:tm_plot_order()] for details.}
 \description{
 Map layer that draws a cartogram. It is recommended to specify a proper crs in `tmap:tm_shape()`.
 }
+\examples{
+library(tmap)
+
+Africa = World[World$continent == "Africa", ]
+
+tm_shape(Africa, crs = "+proj=robin") +
+  tm_cartogram_ncont(size = "pop_est", options = opt_tm_cartogram_ncont())
+
+\dontrun{
+tm_shape(Africa, crs = "+proj=robin") +
+  tm_cartogram(size = "pop_est", options = opt_tm_cartogram(itermax = 15))
+
+tm_shape(World, crs = "+proj=robin") +
+  tm_polygons() +
+  tm_cartogram_ncont(size = "pop_est", fill = "yellow")
+}
+}

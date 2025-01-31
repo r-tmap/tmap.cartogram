@@ -7,6 +7,7 @@
 #'   See [tmap:tm_plot_order()] for details.
 #' @param options passed on to the corresponding `opt_<layer_function>` function
 #' @param ... passed on to `tmap:tm_polygons()`
+#' @example examples/tm_cartogram.R
 #' @import tmap
 #' @export
 tm_cartogram = function(size = 1,
