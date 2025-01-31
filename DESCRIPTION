@@ -8,12 +8,11 @@ Authors@R: c(
 	)
 Description: Provides new layer functions for 'tmap' to create various types of cartograms.
 Version: 0.1
-Date: 2025-01-12
 Encoding: UTF-8
 Depends:
     R (>= 3.5.0),
 Imports:
-    tmap (>= 3.99),
+    tmap (>= 4.0),
     sf,
     cartogram
 Suggests:
