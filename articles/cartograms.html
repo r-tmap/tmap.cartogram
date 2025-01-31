@@ -81,7 +81,7 @@ the bubbles may be relocated.</li>
 Sebastian Jeworutzki under the hood.</p>
 </div>
 <div class="section level2">
-<h2 id="map-projection">Map projection (!)<a class="anchor" aria-label="anchor" href="#map-projection"></a>
+<h2 id="map-projection">Map projection<a class="anchor" aria-label="anchor" href="#map-projection"></a>
 </h2>
 <p>In order to work well, it is strongly recommended to use a projected
 <a href="https://r-tmap.github.io/tmap/articles/foundations_crs" class="external-link">CRS
@@ -167,7 +167,6 @@ Planet Index:</p>
 freedom:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">World</span>, crs <span class="op">=</span> <span class="st">"+proj=robin"</span><span class="op">)</span> <span class="op">+</span></span>
-<span></span>
 <span>    <span class="fu"><a href="../reference/tm_cartogram.html">tm_cartogram_dorling</a></span><span class="op">(</span>size <span class="op">=</span> <span class="st">"pop_est"</span>, </span>
 <span>                         fill <span class="op">=</span> <span class="st">"press"</span>,</span>
 <span>                         fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"cols4all.pu_gn_div"</span>, midpoint <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>,</span>
@@ -183,12 +182,18 @@ freedom:</p>
 in tmap is to disable basemaps. This can be done with
 <code>tm_basemap(NULL)</code>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">World</span>, crs <span class="op">=</span> <span class="st">"+proj=robin"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">tm_polygons</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="../reference/tm_cartogram.html">tm_cartogram_dorling</a></span><span class="op">(</span>size <span class="op">=</span> <span class="st">"pop_est"</span>, fill <span class="op">=</span> <span class="st">"yellow"</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu">tmap_mode</span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> tmap mode set to <span style="color: #0000BB;">"view"</span>.</span></span>
+<span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">World</span>, crs <span class="op">=</span> <span class="st">"+proj=robin"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="../reference/tm_cartogram.html">tm_cartogram_dorling</a></span><span class="op">(</span>size <span class="op">=</span> <span class="st">"pop_est"</span>, </span>
+<span>                         fill <span class="op">=</span> <span class="st">"press"</span>,</span>
+<span>                         fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"cols4all.pu_gn_div"</span>, midpoint <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>,</span>
+<span>                         fill.legend <span class="op">=</span> <span class="fu">tm_legend</span><span class="op">(</span><span class="st">""</span>, height <span class="op">=</span> <span class="fl">30</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">tm_title</span><span class="op">(</span><span class="st">"World Press Freedom Index"</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu">tm_basemap</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Cartogram in progress...</span></span></code></pre></div>
-<p><img src="cartograms_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
+<span><span class="co">#&gt; Cartogram in progress...</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">[view mode]</span> WegGL does not work (yet) with projected map projections, so it has</span></span>
+<span><span class="co">#&gt; been disabled.</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
