@@ -11,6 +11,7 @@ editor_options:
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  results = 'hide',
   fig.width = 8,
   comment = "#>"
 )
@@ -48,13 +49,15 @@ tmap_options(scale = 0.75)
 
 ## Cartogram
 
-Areal regions are distorted such that the obtained area sizes are proportional to a quantitative variable (Gastner and Newman 2004; Nusrat and Kobourov 2016).
-In a **contiguous area cartogram**, the shapes of the polygons are distorted, where the neighborhood relationships between them are preserved as much as possible. In a **non-contiguous cartogram**, the polygons are only resized. 
+In cartograms, areal regions are distorted such that the obtained area sizes are proportional to a quantitative variable. We facilitate the following types:
 
-Categorical maps and choropleths of ratio variables are often misleading, since these maps do not take the population distribution into account properly. Densely populated regions are often underemphasized by their small areas. The project http://www.worldmapper.org/ contains a couple
-of illustrative examples, for instance a distorted world map in which the areas of the countries are proportional to their population sizes (Barford and Dorling 2008).
+* The **contiguous cartogram**, where the shapes of the polygons are distorted, where the neighborhood relationships between them are preserved as much as possible.
+* The **non-contiguous cartogram**, where the polygons are only resized while they keep their shape.
+* The **Dorling cartogram** where polygons are replaced by bubbles. Note that this is different from the [bubble map](https://r-tmap.github.io/tmap/articles/examples_bubble): in a Dorlong cartogram the bubbles do not overlap. To achieve non-overlapping bubbles that are proportional to the target variable, the bubbles may be relocated.
 
-## Important (!)
+Currently, this packages uses the [cartogram](https://sjewo.github.io/cartogram/) package by Sebastian Jeworutzki under the hood.
+
+## Map projection (!)
 
 In order to work well, it is strongly recommended to use a projected [CRS (map projection)](https://r-tmap.github.io/tmap/articles/foundations_crs) that is (approximately) equal-area. Why? Because the cartograms transformation require that that the area of polygons is approximately proportional to the real areas. This is not the case for the mercator projection (plain lat/lon coordinates).
 
@@ -66,25 +69,52 @@ Finally, we recommend to disable basemaps in view mode. Not only because the pol
 
 ## Contiguous cartograms
 
-```{r, fig.heigt=6}
+```{r, fig.height=6}
 Africa = World[World$continent == "Africa", ]
 
 tm_shape(Africa, crs = "+proj=robin") +
-	tm_cartogram(size = "pop_est", options = opt_tm_cartogram(itermax = 15)) +
-	tm_text("name")
+	tm_cartogram(size = "pop_est", options = opt_tm_cartogram(itermax = 15))
 ```
 
+We can use polygon fill color to depict a variable, such as Happy Planet Index:
 
-```{r, fig.heigt=6}
+
+```{r, fig.height=6}
+Africa = World[World$continent == "Africa", ]
+
 tm_shape(Africa, crs = "+proj=robin") +
-	tm_cartogram_ncont(size = "pop_est", options = opt_tm_cartogram_ncont()) +
-	tm_text("name")
+	tm_cartogram(size = "pop_est", 
+				 fill = "life_exp",
+				 fill.scale = tm_scale_intervals(values = "-cols4all.bu_br_div"),
+				 fill.legend = tm_legend("Age"),
+				 options = opt_tm_cartogram(itermax = 15)) +
+tm_title("Life Expectancy")
 ```
+
 
 ## Non-contiguous cartograms
 
+```{r, fig.height=6}
+tm_shape(Africa, crs = "+proj=robin") +
+	tm_cartogram_ncont(size = "pop_est", options = opt_tm_cartogram_ncont())
+```
 
-```{r, fig.height=3.5}
+
+
+```{r, fig.height=6}
+tm_shape(Africa, crs = "+proj=robin") +
+	tm_cartogram_ncont(size = "pop_est", 
+					   fill = "inequality",
+					   fill.scale = tm_scale_continuous(values = "cols4all.pu_gn_div", values.range = c(0, 0.5)),
+					   fill.legend = tm_legend(""),
+					   options = opt_tm_cartogram_ncont()) +
+	tm_text("name", options = opt_tm_text(point.label = TRUE)) +
+tm_title("Income inequality (Gini coefficient)")
+```
+
+A non-contiguous cartogram of the World:
+
+```{r, fig.height=4}
 tm_shape(World, crs = "+proj=robin") +
 	tm_polygons() +
 	tm_cartogram_ncont(size = "pop_est", fill = "yellow")
@@ -92,25 +122,29 @@ tm_shape(World, crs = "+proj=robin") +
 
 ## Dorlin cartograms
 
-```{r, fig.height=3.5}
+```{r, fig.height=4}
 tm_shape(World, crs = "+proj=robin") +
 	tm_polygons() +
 	tm_cartogram_dorling(size = "pop_est", fill = "yellow")
 ```
 
+We can the bubble fill color to show some other data, such as press freedom:
+
+```{r, fig.height=4}
+tm_shape(World, crs = "+proj=robin") +
+
+	tm_cartogram_dorling(size = "pop_est", 
+						 fill = "press",
+						 fill.scale = tm_scale_continuous(values = "cols4all.pu_gn_div", midpoint = 50),
+						 fill.legend = tm_legend("", height = 30)) +
+tm_title("World Press Freedom Index")
+```
+
+
 ## View mode
 
 These maps are also available interactively. 
 As noted above the trick in tmap is to disable basemaps. This can be done with `tm_basemap(NULL)`:
-
-```{r}
-tmap_mode("view")
-tm_shape(World, crs = "+proj=robin") +
-	tm_polygons() +
-	tm_cartogram_ncont(size = "pop_est", fill = "yellow") +
-tm_basemap(NULL)
-```
-
 
 ```{r}
 tm_shape(World, crs = "+proj=robin") +
