@@ -68,8 +68,18 @@ See [tmap:tm_plot_order()] for details.}
 
 \item{share}{share of the bounding box filled with the larger circle (see [cartogram::cartogram_dorling()] argument `k`)}
 }
+\value{
+a [tmap::tmap-element], supposed to be stacked after [tmap::tm_shape()] using the `+` operator. The `opt_<layer_function>` function returns a list that should be passed on to the `options` argument.
+}
 \description{
-Map layer that draws a cartogram. It is recommended to specify a proper crs in `tmap:tm_shape()`.
+Map layer that draws a cartogram. See details for types. It is recommended to specify a proper crs in [tmap::tm_shape()].
+}
+\details{
+In the contiguous cartogram polygons are distorted where the geographic relations are maintained. The algorithm by Dougenik et al. (1985) is used via [cartogram::cartogram_cont()].
+
+In the non-contiguous cartogram polygons are resized only. The used algorithm has been proposed by Olson (1976) and implemented in [cartogram::cartogram_ncont()].
+
+The Dorling cartogram (Dorling, 1996) generates proportional bubbles and is implemented in [cartogram::cartogram_dorling()].
 }
 \examples{
 library(tmap)
@@ -79,7 +89,7 @@ Africa = World[World$continent == "Africa", ]
 tm_shape(Africa, crs = "+proj=robin") +
   tm_cartogram_ncont(size = "pop_est", options = opt_tm_cartogram_ncont())
 
-\dontrun{
+\donttest{
 tm_shape(Africa, crs = "+proj=robin") +
   tm_cartogram(size = "pop_est", options = opt_tm_cartogram(itermax = 15))
 
@@ -87,4 +97,12 @@ tm_shape(World, crs = "+proj=robin") +
   tm_polygons() +
   tm_cartogram_ncont(size = "pop_est", fill = "yellow")
 }
+
+}
+\references{
+Dougenik, J. A., Chrisman, N. R., & Niemeyer, D. R. (1985). An Algorithm To Construct Continuous Area Cartograms. In The Professional Geographer, 37(1), 75-81.
+
+Olson, J. M. (1976). Noncontiguous Area Cartograms. In The Professional Geographer, 28(4), 371-380.
+
+Dorling, D. (1996). Area Cartograms: Their Use and Creation. In Concepts and Techniques in Modern Geography (CATMOG), 59.
 }

@@ -1,6 +1,12 @@
 #' Map layer: cartogram
 #'
-#' Map layer that draws a cartogram. It is recommended to specify a proper crs in `tmap:tm_shape()`.
+#' Map layer that draws a cartogram. See details for types. It is recommended to specify a proper crs in [tmap::tm_shape()].
+#'
+#' In the contiguous cartogram polygons are distorted where the geographic relations are maintained. The algorithm by Dougenik et al. (1985) is used via [cartogram::cartogram_cont()].
+#'
+#' In the non-contiguous cartogram polygons are resized only. The used algorithm has been proposed by Olson (1976) and implemented in [cartogram::cartogram_ncont()].
+#'
+#' The Dorling cartogram (Dorling, 1996) generates proportional bubbles and is implemented in [cartogram::cartogram_dorling()].
 #'
 #' @param size,size.scale,size.legend,size.chart,size.free Visual variable that specifies the polygon sizes.
 #' @param plot.order Specification in which order the spatial features are drawn.
@@ -8,7 +14,13 @@
 #' @param options passed on to the corresponding `opt_<layer_function>` function
 #' @param ... passed on to `tmap:tm_polygons()`
 #' @example examples/tm_cartogram.R
+#' @return a [tmap::tmap-element], supposed to be stacked after [tmap::tm_shape()] using the `+` operator. The `opt_<layer_function>` function returns a list that should be passed on to the `options` argument.
 #' @import tmap
+#' @references Dougenik, J. A., Chrisman, N. R., & Niemeyer, D. R. (1985). An Algorithm To Construct Continuous Area Cartograms. In The Professional Geographer, 37(1), 75-81.
+#'
+#' Olson, J. M. (1976). Noncontiguous Area Cartograms. In The Professional Geographer, 28(4), 371-380.
+#'
+#' Dorling, D. (1996). Area Cartograms: Their Use and Creation. In Concepts and Techniques in Modern Geography (CATMOG), 59.
 #' @export
 tm_cartogram = function(size = 1,
 						size.scale = tmap::tm_scale(),

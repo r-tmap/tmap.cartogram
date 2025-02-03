@@ -1,6 +1,7 @@
 #' Cartogram transformation
 #'
 #' @param shpTM,size,ord__,plot.order,args,scale tmap internals
+#' @return list of two. The first is a spatial object, the second the tmap ID codes
 #' @export
 #' @keywords internal
 tmapTransCartogram = function(shpTM, size, ord__, plot.order, args, scale) {

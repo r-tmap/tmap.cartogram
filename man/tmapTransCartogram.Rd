@@ -9,6 +9,9 @@ tmapTransCartogram(shpTM, size, ord__, plot.order, args, scale)
 \arguments{
 \item{shpTM, size, ord__, plot.order, args, scale}{tmap internals}
 }
+\value{
+list of two. The first is a spatial object, the second the tmap ID codes
+}
 \description{
 Cartogram transformation
 }
