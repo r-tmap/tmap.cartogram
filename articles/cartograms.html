@@ -115,9 +115,7 @@ keep its projected CRS when basemaps are disabled.</p>
 <p>We can use polygon fill color to depict a variable, such as Happy
 Planet Index:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Africa</span> <span class="op">=</span> <span class="va">World</span><span class="op">[</span><span class="va">World</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Africa"</span>, <span class="op">]</span></span>
-<span></span>
-<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">Africa</span>, crs <span class="op">=</span> <span class="st">"+proj=robin"</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">Africa</span>, crs <span class="op">=</span> <span class="st">"+proj=robin"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="../reference/tm_cartogram.html">tm_cartogram</a></span><span class="op">(</span>size <span class="op">=</span> <span class="st">"pop_est"</span>, </span>
 <span>                 fill <span class="op">=</span> <span class="st">"life_exp"</span>,</span>
 <span>                 fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html" class="external-link">tm_scale_intervals</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"-cols4all.bu_br_div"</span><span class="op">)</span>,</span>
@@ -146,11 +144,23 @@ Planet Index:</p>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html" class="external-link">tm_title</a></span><span class="op">(</span><span class="st">"Income inequality (Gini coefficient)"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Cartogram in progress...</span></span></code></pre></div>
 <p><img src="cartograms_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
-<p>A non-contiguous cartogram of the World:</p>
+<p>A non-contiguous cartogram of the World. The countries are resized
+relative to population. The colors indicate carbon footprint.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">World</span>, crs <span class="op">=</span> <span class="st">"+proj=robin"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html" class="external-link">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="../reference/tm_cartogram.html">tm_cartogram_ncont</a></span><span class="op">(</span>size <span class="op">=</span> <span class="st">"pop_est"</span>, fill <span class="op">=</span> <span class="st">"yellow"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html" class="external-link">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span>, col <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/tm_cartogram.html">tm_cartogram_ncont</a></span><span class="op">(</span></span>
+<span>    size <span class="op">=</span> <span class="st">"pop_est"</span>, </span>
+<span>    fill <span class="op">=</span> <span class="st">"footprint"</span>,</span>
+<span>    fill.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html" class="external-link">tm_legend</a></span><span class="op">(</span><span class="st">"Per capita greenhouse gas emissions"</span>, </span>
+<span>      orientation <span class="op">=</span> <span class="st">"landscape"</span>, bg.color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span>,</span>
+<span>    fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html" class="external-link">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"brewer.yl_or_rd"</span>,</span>
+<span>      values.range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html" class="external-link">tm_layout</a></span><span class="op">(</span>earth_boundary <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  frame <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  earth_boundary.lwd <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  bg.color <span class="op">=</span> <span class="st">"#bbddff"</span>,</span>
+<span>  space.color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Cartogram in progress...</span></span></code></pre></div>
 <p><img src="cartograms_files/figure-html/unnamed-chunk-7-1.png" width="768"></p>
 </div>
