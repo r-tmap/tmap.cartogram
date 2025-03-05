@@ -5,7 +5,10 @@
 #' @export
 #' @keywords internal
 tmapTransCartogram = function(shpTM, size, ord__, plot.order, args, scale) {
+
 	s = shpTM$shp
+
+	bbx = shpTM$bbox
 
 	# bypass cartogram error; use warning instead
 	isll = sf::st_is_longlat(s)
@@ -67,5 +70,5 @@ tmapTransCartogram = function(shpTM, size, ord__, plot.order, args, scale) {
 	# set lat/long crs again
 	if (isll) shp2 = sf::st_set_crs(shp2, llcrs)
 
-	list(shp = shp2[o], tmapID = shp$tmapID__[o])
+	list(shp = shp2[o], tmapID = shp$tmapID__[o], bbox = bbx)
 }
