@@ -46,7 +46,7 @@ tm_cartogram = function(size = 1,
 										  chart = size.chart,
 										  free = size.free))
 		tpar = tmapTpar(area = "__area")
-		trans.isglobal = FALSE
+		trans.apply_to = "this_following"
 		plot.order = po
 	})
 	tmp
