@@ -37,7 +37,7 @@ tmapTransCartogram = function(shpTM, size, ord__, plot.order, args, scale) {
 		stop("unknown cartogram type", call. = FALSE)
 	}
 
-	string = paste(c(object.size(x), args$type, unlist(xargs)), collapse = "_")
+	string = paste(c(object.size(x), args$type, unlist(xargs), head(size, 2), tail(size, 2)), collapse = "_")
 	cache = get("cache", envir = .TMAP_CARTOGRAM)
 
 	cache_id = which(string == names(cache))[1]

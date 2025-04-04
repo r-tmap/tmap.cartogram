@@ -16,6 +16,7 @@
 #' @example examples/tm_cartogram.R
 #' @return a [tmap::tmap-element], supposed to be stacked after [tmap::tm_shape()] using the `+` operator. The `opt_<layer_function>` function returns a list that should be passed on to the `options` argument.
 #' @import tmap
+#' @importFrom utils head object.size tail
 #' @references Dougenik, J. A., Chrisman, N. R., & Niemeyer, D. R. (1985). An Algorithm To Construct Continuous Area Cartograms. In The Professional Geographer, 37(1), 75-81.
 #'
 #' Olson, J. M. (1976). Noncontiguous Area Cartograms. In The Professional Geographer, 28(4), 371-380.
@@ -34,17 +35,18 @@ tm_cartogram = function(size = 1,
 	#trans.args$type = match.arg(trans.args$type)
 
 	# types: "cont", "ncont", "dorling"
+	s = tmapScale(aes = "area",
+				  value = size,
+				  scale = size.scale,
+				  legend = size.legend,
+				  chart = size.chart,
+				  free = size.free)
 
 	tmp = do.call(tmap::tm_polygons, c(list(...), list(options = options$polygons)))
 	tmp[[1]] = within(tmp[[1]], {
 		trans.fun = tmapTransCartogram
 		trans.args = options$cartogram$trans.args
-		trans.aes = list(size = tmapScale(aes = "area",
-										  value = size,
-										  scale = size.scale,
-										  legend = size.legend,
-										  chart = size.chart,
-										  free = size.free))
+		trans.aes = list(size = s)
 		tpar = tmapTpar(area = "__area")
 		trans.apply_to = "this_following"
 		plot.order = po

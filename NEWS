@@ -1,2 +1,6 @@
+version 0.2
+- added caching
+- supports animation (tmap 4.1)
+
 version 0.1
 - development version
