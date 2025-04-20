@@ -19,9 +19,18 @@ reference:
 
 navbar:
   structure:
-    left:  [reference, cartograms, news]
+    left:  [reference, intro, cont, ncont, dorling, news]
   components:
     home: ~
-    cartograms:
-      text: Cartograms
-      href: articles/cartograms
+    intro:
+      text: Introduction
+      href: articles/intro
+    cont:
+      text: Contiguous
+      href: articles/contiguous
+    cont:
+      text: Non-Contiguous
+      href: articles/non_contiguous
+    cont:
+      text: Dorling
+      href: articles/dorling

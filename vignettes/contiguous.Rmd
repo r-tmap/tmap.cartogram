@@ -1,0 +1,68 @@
+---
+title: "Contiguous cartograms"
+output: 
+  bookdown::html_vignette2:
+bibliography: '`r system.file("tmap.bib", package="tmap")`'
+csl: "`r system.file('ieee.csl', package = 'tmap')`"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  results = 'hide',
+  fig.width = 8,
+  comment = "#>"
+)
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(more, x[lines], more)
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
+```
+
+
+```{r, echo = FALSE, message = FALSE}
+library(tmap)
+library(tmap.cartogram)
+tmap_options(scale = 0.75)
+```
+
+## Contiguous cartograms
+
+```{r, fig.height=6}
+Africa = World[World$continent == "Africa", ]
+
+tm_shape(Africa, crs = "+proj=robin") +
+	tm_cartogram(size = "pop_est", options = opt_tm_cartogram(itermax = 15))
+```
+
+We can use polygon fill color to depict a variable, such as Happy Planet Index:
+
+
+```{r, fig.height=6}
+tm_shape(Africa, crs = "+proj=robin") +
+	tm_cartogram(size = "pop_est", 
+				 fill = "life_exp",
+				 fill.scale = tm_scale_intervals(values = "-cols4all.bu_br_div"),
+				 fill.legend = tm_legend("Age"),
+				 options = opt_tm_cartogram(itermax = 15)) +
+tm_title("Life Expectancy")
+```

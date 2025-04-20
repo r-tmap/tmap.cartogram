@@ -1,0 +1,84 @@
+---
+title: "Dorling cartograms"
+output: 
+  bookdown::html_vignette2:
+bibliography: '`r system.file("tmap.bib", package="tmap")`'
+csl: "`r system.file('ieee.csl', package = 'tmap')`"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  results = 'hide',
+  fig.width = 8,
+  comment = "#>"
+)
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(more, x[lines], more)
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
+```
+
+
+```{r, echo = FALSE, message = FALSE}
+library(tmap)
+library(tmap.cartogram)
+tmap_options(scale = 0.75)
+```
+
+
+
+## Dorlin cartograms
+
+```{r, fig.height=4}
+tm_shape(World, crs = "+proj=robin") +
+	tm_polygons() +
+	tm_cartogram_dorling(size = "pop_est", fill = "yellow")
+```
+
+We can the bubble fill color to show some other data, such as press freedom:
+
+```{r, fig.height=4}
+tm_shape(World, crs = "+proj=robin") +
+	tm_cartogram_dorling(size = "pop_est", 
+						 fill = "press",
+						 fill.scale = tm_scale_continuous(values = "cols4all.pu_gn_div", midpoint = 50),
+						 fill.legend = tm_legend("", height = 30)) +
+tm_title("World Press Freedom Index")
+```
+
+
+## View mode
+
+These maps are also available interactively. 
+As noted above the trick in tmap is to disable basemaps. This can be done with `tm_basemap(NULL)`:
+
+```{r}
+tmap_mode("view")
+tm_shape(World, crs = "+proj=robin") +
+	tm_cartogram_dorling(size = "pop_est", 
+						 fill = "press",
+						 fill.scale = tm_scale_continuous(values = "cols4all.pu_gn_div", midpoint = 50),
+						 fill.legend = tm_legend("", height = 30)) +
+tm_title("World Press Freedom Index") +
+tm_basemap(NULL)
+```

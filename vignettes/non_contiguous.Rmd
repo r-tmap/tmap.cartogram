@@ -1,0 +1,93 @@
+---
+title: "Non-contiguous cartogram"
+output: 
+  bookdown::html_vignette2:
+bibliography: '`r system.file("tmap.bib", package="tmap")`'
+csl: "`r system.file('ieee.csl', package = 'tmap')`"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  results = 'hide',
+  fig.width = 8,
+  comment = "#>"
+)
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(more, x[lines], more)
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
+```
+
+
+```{r, echo = FALSE, message = FALSE}
+library(tmap)
+library(tmap.cartogram)
+tmap_options(scale = 0.75)
+```
+
+
+
+
+## Non-contiguous cartograms
+
+```{r, fig.height=6}
+Africa = World[World$continent == "Africa", ]
+```
+
+
+```{r, fig.height=6}
+tm_shape(Africa, crs = "+proj=robin") +
+	tm_cartogram_ncont(size = "pop_est", options = opt_tm_cartogram_ncont())
+```
+
+
+
+```{r, fig.height=6}
+tm_shape(Africa, crs = "+proj=robin") +
+	tm_cartogram_ncont(size = "pop_est", 
+					   fill = "inequality",
+					   fill.scale = tm_scale_continuous(values = "cols4all.pu_gn_div", values.range = c(0, 0.5)),
+					   fill.legend = tm_legend(""),
+					   options = opt_tm_cartogram_ncont()) +
+	tm_text("name", options = opt_tm_text(point.label = TRUE)) +
+tm_title("Income inequality (Gini coefficient)")
+```
+
+A non-contiguous cartogram of the World. The countries are resized relative to population. The colors indicate carbon footprint.
+
+```{r, fig.height=4}
+tm_shape(World, crs = "+proj=robin") +
+  tm_polygons(fill = "white", col = NULL) +
+  tm_cartogram_ncont(
+    size = "pop_est", 
+    fill = "footprint",
+    fill.legend = tm_legend("Per capita greenhouse gas emissions", 
+      orientation = "landscape", bg.color = "white"),
+    fill.scale = tm_scale_continuous(values = "brewer.yl_or_rd",
+      values.range = c(0, 1))) +
+tm_layout(earth_boundary = TRUE,
+  frame = FALSE,
+  earth_boundary.lwd = 2,
+  bg.color = "#bbddff",
+  space.color = "white")
+```
