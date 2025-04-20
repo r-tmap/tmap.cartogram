@@ -17,7 +17,7 @@ Imports:
 Suggests:
     knitr,
     transformr
-Config/Needs/check: Nowosad/spDataLarge, lwgeom
+Config/Needs/check: Nowosad/spDataLarge, lwgeom, r-tmap/tmap
 Config/Needs/coverage: Nowosad/spDataLarge, lwgeom
 Config/Needs/website: bookdown, rmarkdown, r-tmap/tmap
 URL: https://github.com/r-tmap/tmap.cartogram, https://r-tmap.github.io/tmap.cartogram/
