@@ -16,7 +16,8 @@ Imports:
     cartogram
 Suggests:
     knitr,
-    transformr
+    transformr,
+    gifski
 Config/Needs/check: Nowosad/spDataLarge, lwgeom, r-tmap/tmap
 Config/Needs/coverage: Nowosad/spDataLarge, lwgeom
 Config/Needs/website: bookdown, rmarkdown, r-tmap/tmap
