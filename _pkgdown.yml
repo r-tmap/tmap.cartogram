@@ -28,9 +28,9 @@ navbar:
     cont:
       text: Contiguous
       href: articles/contiguous
-    cont:
+    ncont:
       text: Non-Contiguous
       href: articles/non_contiguous
-    cont:
+    dorling:
       text: Dorling
       href: articles/dorling
