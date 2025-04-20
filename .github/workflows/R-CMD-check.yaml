@@ -39,6 +39,13 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
+      - name: Install XQuartz (only on macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install --cask xquartz
+          # XQuartz installs but may need to be made available immediately
+          sudo launchctl load -w /Library/LaunchAgents/org.macosforge.xquartz.startx.plist
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
