@@ -16,7 +16,10 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item"><a class="nav-link" href="../articles/cartograms">Cartograms</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/intro">Introduction</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/contiguous">Contiguous</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/non_contiguous">Non-Contiguous</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/dorling">Dorling</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-tmap/tmap.cartogram/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -161,12 +164,13 @@ See [tmap:tm_plot_order()] for details.</p></dd>
 <span class="r-plt img"><img src="tm_cartogram-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># with animation</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"transformr"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">Africa</span>, crs <span class="op">=</span> <span class="st">"+proj=robin"</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu">tm_cartogram</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    size <span class="op">=</span> <span class="st">"*pop_est"</span>,</span></span>
 <span class="r-in"><span>    fill <span class="op">=</span> <span class="st">"footprint"</span>, options <span class="op">=</span> <span class="fu">opt_tm_cartogram</span><span class="op">(</span>itermax <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in tm_polygons():</span> Visual values used for the variable <span style="color: #0000BB;">"size"</span> are incorrect.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span>  Variable should be a data variable name or a numeric value.</span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required namespace: transformr</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
