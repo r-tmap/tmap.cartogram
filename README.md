@@ -1,5 +1,5 @@
 
-# tmap.cartpgram: extension to ‘tmap’ for creating cartograms
+# tmap.cartpgram: cartograms in tmap <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
 
