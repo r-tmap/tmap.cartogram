@@ -36,7 +36,7 @@ knitr::knit_hooks$set(output = function(x, options) {
  })
 ```
 
-# tmap.cartpgram: cartograms in tmap <img src="man/figures/logo.png" align="right" height="139" alt="" />
+# tmap.cartogram: cartograms in tmap <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/r-tmap/tmap.cartogram/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-tmap/tmap/actions/workflows/R-CMD-check.yaml)
