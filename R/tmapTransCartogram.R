@@ -24,14 +24,16 @@ tmapTransCartogram = function(shpTM, size, ord__, plot.order, args, scale) {
 
 
 	if (args$type == "cont") {
-		xargs = list(itermax = args$itermax)
+		xargs = args[names(args) != "type"]
 
 		#shp = suppressMessages(suppressWarnings({cartogram::cartogram_cont(x, weight = "weight", itermax = args$itermax)}))
 	} else if (args$type == "ncont") {
-		xargs = list(k = args$expansion, inplace = args$inplace)
+		xargs = args[names(args) != "type"]
+		names(xargs)[names(xargs) == "expansion"] <- "k"
 		#shp = suppressMessages(suppressWarnings({cartogram::cartogram_ncont(x, weight = "weight", k = args$expansion, inplace = args$inplace)}))
 	} else if (args$type == "dorling") {
-		xargs = list(k = args$share, itermax = args$itermax)
+		xargs = args[names(args) != "type"]
+		names(xargs)[names(xargs) == "share"] <- "k"
 		#shp = suppressMessages(suppressWarnings({cartogram::cartogram_dorling(x, weight = "weight", k = args$share, itermax = args$itermax)}))
 	} else {
 		stop("unknown cartogram type", call. = FALSE)
