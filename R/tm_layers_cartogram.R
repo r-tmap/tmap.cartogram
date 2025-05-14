@@ -105,8 +105,8 @@ opt_tm_cartogram = function(type = "cont",
 							itermax = 15,
 							...) {
 	list(cartogram = list(mapping.args = list(),
-						  trans.args = list(type = type, itermax = itermax)),
-		 polygons = do.call(tmap::opt_tm_polygons, list(...)))
+						  trans.args = list(type = type, itermax = itermax, ...)),
+		 polygons = do.call(tmap::opt_tm_polygons, list()))
 }
 
 #' @rdname tm_cartogram
@@ -119,8 +119,8 @@ opt_tm_cartogram_ncont = function(type = "ncont",
 								  ...) {
 
 	list(cartogram = list(mapping.args = list(),
-						  trans.args = list(type = type, expansion = expansion, inplace = inplace)),
-		 polygons = do.call(tmap::opt_tm_polygons, list(...)))
+						  trans.args = list(type = type, expansion = expansion, inplace = inplace, ...)),
+		 polygons = do.call(tmap::opt_tm_polygons, list()))
 }
 
 
@@ -132,6 +132,6 @@ opt_tm_cartogram_dorling = function(type = "dorling",
 									itermax = 1000,
 									...) {
 	list(cartogram = list(mapping.args = list(),
-						  trans.args = list(type = type, share = share, itermax = itermax)),
-		 polygons = do.call(tmap::opt_tm_polygons, list(...)))
+						  trans.args = list(type = type, share = share, itermax = itermax, ...)),
+		 polygons = do.call(tmap::opt_tm_polygons, list()))
 }
