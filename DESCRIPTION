@@ -3,15 +3,16 @@ License: GPL-3
 Title: Extension to 'tmap' for Creating Cartograms
 Type: Package
 Authors@R: c(
-	person("Martijn", "Tennekes", email = "mtennekes@gmail.com", role = c("aut", "cre"))
+	person("Martijn", "Tennekes", email = "mtennekes@gmail.com", role = c("aut", "cre")),
+	person("Sebastian", "Jeworutzki", , "Sebastian.Jeworutzki@rub.de", role = "ctb")
 	)
 Description: Provides new layer functions to 'tmap' for creating various types of cartograms. A cartogram is a type of thematic map in which geographic areas are resized or distorted based on a quantitative variable, such as population. The goal is to make the area sizes proportional to the selected variable while preserving geographic positions as much as possible.
-Version: 0.1
+Version: 0.2
 Encoding: UTF-8
 Depends:
     R (>= 3.5.0),
 Imports:
-    tmap (>= 4.0),
+    tmap (>= 4.1),
     sf,
     cartogram
 Suggests:
