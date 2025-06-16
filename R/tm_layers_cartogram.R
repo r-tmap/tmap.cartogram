@@ -45,6 +45,7 @@ tm_cartogram = function(size = 1,
 
 	tmp = do.call(tmap::tm_polygons, c(list(...), list(options = options$polygons)))
 	tmp[[1]] = within(tmp[[1]], {
+		layer = c("cartogram", "polygons")
 		trans.fun = tmapTransCartogram
 		trans.args = options$cartogram$trans.args
 		trans.aes = list(size = s)
@@ -66,13 +67,14 @@ tm_cartogram_ncont = function(size = 1,
 							  options = opt_tm_cartogram_ncont(),
 							  ...) {
 	args = list(...)
-	do.call(tm_cartogram, c(list(size = size,
+	tmp = do.call(tm_cartogram, c(list(size = size,
 								 size.scale = size.scale,
 								 size.legend = size.legend,
 								 size.chart = size.chart,
 								 size.free = size.free,
 								 plot.order = plot.order,
 								 options = options), args))
+	tmp[[1]]$layer = c("cartogram_ncont", "polygons")
 }
 
 
@@ -87,13 +89,14 @@ tm_cartogram_dorling = function(size = 1,
 								options = opt_tm_cartogram_dorling(),
 								...) {
 	args = list(...)
-	do.call(tm_cartogram, c(list(size = size,
+	tmp = do.call(tm_cartogram, c(list(size = size,
 								 size.scale = size.scale,
 								 size.legend = size.legend,
 								 size.chart = size.chart,
 								 size.free = size.free,
 								 plot.order = plot.order,
 								 options = options), args))
+	tmp[[1]]$layer = c("cartogram_dorling", "polygons")
 }
 
 #' @rdname tm_cartogram
