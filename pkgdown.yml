@@ -7,7 +7,7 @@ articles:
   dorling: dorling.html
   intro: intro.html
   non_contiguous: non_contiguous.html
-last_built: 2025-06-16T17:30Z
+last_built: 2025-07-14T07:34Z
 urls:
   reference: https://r-tmap.github.io/tmap.cartogram/reference
   article: https://r-tmap.github.io/tmap.cartogram/articles
