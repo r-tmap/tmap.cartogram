@@ -75,6 +75,7 @@ tm_cartogram_ncont = function(size = 1,
 								 plot.order = plot.order,
 								 options = options), args))
 	tmp[[1]]$layer = c("cartogram_ncont", "polygons")
+	tmp
 }
 
 
@@ -97,6 +98,7 @@ tm_cartogram_dorling = function(size = 1,
 								 plot.order = plot.order,
 								 options = options), args))
 	tmp[[1]]$layer = c("cartogram_dorling", "polygons")
+	tmp
 }
 
 #' @rdname tm_cartogram

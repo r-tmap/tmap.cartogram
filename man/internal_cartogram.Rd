@@ -16,7 +16,7 @@
 \alias{tmapMaplibreDataPlot.tm_data_cartogram_dorling}
 \title{Intermal methods}
 \usage{
-tmapGridDataPlot.tm_data_cartogram(
+\method{tmapGridDataPlot}{tm_data_cartogram}(
   a,
   shpTM,
   dt,
@@ -32,7 +32,7 @@ tmapGridDataPlot.tm_data_cartogram(
   ...
 )
 
-tmapGridDataPlot.tm_data_cartogram_ncont(
+\method{tmapGridDataPlot}{tm_data_cartogram_ncont}(
   a,
   shpTM,
   dt,
@@ -48,7 +48,7 @@ tmapGridDataPlot.tm_data_cartogram_ncont(
   ...
 )
 
-tmapGridDataPlot.tm_data_cartogram_dorling(
+\method{tmapGridDataPlot}{tm_data_cartogram_dorling}(
   a,
   shpTM,
   dt,
@@ -64,7 +64,7 @@ tmapGridDataPlot.tm_data_cartogram_dorling(
   ...
 )
 
-tmapLeafletDataPlot.tm_data_cartogram(
+\method{tmapLeafletDataPlot}{tm_data_cartogram}(
   a,
   shpTM,
   dt,
@@ -80,7 +80,7 @@ tmapLeafletDataPlot.tm_data_cartogram(
   ...
 )
 
-tmapLeafletDataPlot.tm_data_cartogram_ncont(
+\method{tmapLeafletDataPlot}{tm_data_cartogram_ncont}(
   a,
   shpTM,
   dt,
@@ -96,7 +96,7 @@ tmapLeafletDataPlot.tm_data_cartogram_ncont(
   ...
 )
 
-tmapLeafletDataPlot.tm_data_cartogram_dorling(
+\method{tmapLeafletDataPlot}{tm_data_cartogram_dorling}(
   a,
   shpTM,
   dt,
