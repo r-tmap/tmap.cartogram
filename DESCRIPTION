@@ -24,4 +24,4 @@ Config/Needs/coverage: Nowosad/spDataLarge, lwgeom
 Config/Needs/website: bookdown, rmarkdown, r-tmap/tmap
 URL: https://github.com/r-tmap/tmap.cartogram, https://r-tmap.github.io/tmap.cartogram/
 BugReports: https://github.com/r-tmap/tmap.cartogram/issues
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
