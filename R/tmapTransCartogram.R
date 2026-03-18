@@ -14,6 +14,9 @@ tmapTransCartogram = function(shpTM, size, ord__, plot.order, args, scale) {
 	isll = sf::st_is_longlat(s)
 	if (isll) {
 		llcrs = sf::st_crs(s)
+		if (args$type == "dorling") {
+			stop("tm_cartogram requires projected coordinates, not longlat degrees. A projected CRS can be specified in tm_shape (argument crs)", call. = FALSE)
+		}
 		warning("tm_cartogram requires projected coordinates, not longlat degrees. A projected CRS can be specified in tm_shape (argument crs)", call. = FALSE)
 		s = sf::st_set_crs(s, NA)
 	}
