@@ -1,0 +1,50 @@
+# Introduction
+
+## Cartogram
+
+In cartograms, areal regions are distorted such that the obtained area
+sizes are proportional to a quantitative variable. We facilitate the
+following types:
+
+- The **contiguous cartogram**, where the shapes of the polygons are
+  distorted, where the neighborhood relationships between them are
+  preserved as much as possible.
+- The **non-contiguous cartogram**, where the polygons are only resized
+  while they keep their shape.
+- The **Dorling cartogram** where polygons are replaced by bubbles. Note
+  that this is different from the [bubble
+  map](https://r-tmap.github.io/tmap/articles/examples_bubble): in a
+  Dorlong cartogram the bubbles do not overlap. To achieve
+  non-overlapping bubbles that are proportional to the target variable,
+  the bubbles may be relocated.
+
+Currently, this packages uses the
+[cartogram](https://sjewo.github.io/cartogram/) package by Sebastian
+Jeworutzki under the hood.
+
+## Map projection
+
+In order to work well, it is strongly recommended to use a projected
+[CRS (map
+projection)](https://r-tmap.github.io/tmap/articles/foundations_crs)
+that is (approximately) equal-area. Why? Because the cartograms
+transformation require that that the area of polygons is approximately
+proportional to the real areas. This is not the case for the mercator
+projection (plain lat/lon coordinates).
+
+For these examples we use the Robinson projection. If you are unsure
+which to use, set `crs = "auto"` which enables a (work-in-progress)
+automatic map projection recommendation.
+
+In addition, this crs must be set in
+[`tm_shape()`](https://r-tmap.github.io/tmap/reference/tm_shape.html),
+and not afterwards via
+[`tm_crs()`](https://r-tmap.github.io/tmap/reference/tm_crs.html). Why?
+Because the former ensures that the transformation is applied in the
+correct CRS, whereas the latter is used for plotting only.
+
+Finally, we recommend to disable basemaps in view mode. Not only because
+the polygons will be distorted (and therefore will not be consistent
+with the basemaps), but because basemaps are usually rendered in the
+(pseudo) mercator projection. By default a spatial object will keep its
+projected CRS when basemaps are disabled.
