@@ -7,12 +7,12 @@ Authors@R: c(
 	person("Sebastian", "Jeworutzki", , "Sebastian.Jeworutzki@rub.de", role = "ctb")
 	)
 Description: Provides new layer functions to 'tmap' for creating various types of cartograms. A cartogram is a type of thematic map in which geographic areas are resized or distorted based on a quantitative variable, such as population. The goal is to make the area sizes proportional to the selected variable while preserving geographic positions as much as possible.
-Version: 0.2
+Version: 0.2-1
 Encoding: UTF-8
 Depends:
     R (>= 3.5.0),
 Imports:
-    tmap (>= 4.1),
+    tmap (>= 4.3),
     sf,
     cartogram
 Suggests:
@@ -24,4 +24,4 @@ Config/Needs/coverage: Nowosad/spDataLarge, lwgeom
 Config/Needs/website: bookdown, rmarkdown, r-tmap/tmap
 URL: https://github.com/r-tmap/tmap.cartogram, https://r-tmap.github.io/tmap.cartogram/
 BugReports: https://github.com/r-tmap/tmap.cartogram/issues
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.0.0

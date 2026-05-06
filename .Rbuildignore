@@ -17,3 +17,5 @@ README
 ^\.covrignore$
 ^vignettes$
 ^CRAN-SUBMISSION$
+^\.positai$
+^\.claude$
