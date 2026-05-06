@@ -3,6 +3,7 @@
 ## Dorlin cartograms
 
 ``` r
+
 tm_shape(World, crs = "+proj=robin") +
     tm_polygons() +
     tm_cartogram_dorling(size = "pop_est", fill = "yellow")
@@ -15,6 +16,7 @@ We can the bubble fill color to show some other data, such as press
 freedom:
 
 ``` r
+
 tm_shape(World, crs = "+proj=robin") +
     tm_cartogram_dorling(size = "pop_est", 
                          fill = "press",
@@ -31,6 +33,7 @@ These maps are also available interactively. As noted above the trick in
 tmap is to disable basemaps. This can be done with `tm_basemap(NULL)`:
 
 ``` r
+
 tmap_mode("view")
 #> ℹ tmap modes "plot" - "view"
 #> ℹ toggle with `tmap::ttm()`

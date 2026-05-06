@@ -3,6 +3,7 @@
 ## Contiguous cartograms
 
 ``` r
+
 Africa = World[World$continent == "Africa", ]
 
 tm_shape(Africa, crs = "+proj=robin") +
@@ -16,6 +17,7 @@ We can use polygon fill color to depict a variable, such as Happy Planet
 Index:
 
 ``` r
+
 tm_shape(Africa, crs = "+proj=robin") +
     tm_cartogram(size = "pop_est", 
                  fill = "life_exp",
@@ -30,6 +32,7 @@ tm_title("Life Expectancy")
 We can also animate this by putting a `*` before the variable name:
 
 ``` r
+
 tm_shape(Africa, crs = "+proj=robin") +
     tm_cartogram(size = "*pop_est", 
                  fill = "life_exp",

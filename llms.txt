@@ -8,12 +8,14 @@ cartograms.
 Installation of **tmap.cartogram** is straightforward:
 
 ``` r
+
 install.packages("tmap.cartogram")
 ```
 
 ### Development version
 
 ``` r
+
 # install.packages("remotes")
 remotes::install_github("r-tmap/tmap.cartogram")
 

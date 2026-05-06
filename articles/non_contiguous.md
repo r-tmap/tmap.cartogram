@@ -3,10 +3,12 @@
 ## Non-contiguous cartograms
 
 ``` r
+
 Africa = World[World$continent == "Africa", ]
 ```
 
 ``` r
+
 tm_shape(Africa, crs = "+proj=robin") +
     tm_cartogram_ncont(size = "pop_est", options = opt_tm_cartogram_ncont())
 #> Cartogram in progress...
@@ -15,6 +17,7 @@ tm_shape(Africa, crs = "+proj=robin") +
 ![](non_contiguous_files/figure-html/unnamed-chunk-4-1.png)
 
 ``` r
+
 tm_shape(Africa, crs = "+proj=robin") +
     tm_cartogram_ncont(size = "pop_est", 
                        fill = "inequality",
@@ -31,6 +34,7 @@ A non-contiguous cartogram of the World. The countries are resized
 relative to population. The colors indicate carbon footprint.
 
 ``` r
+
 tm_shape(World, crs = "+proj=robin") +
   tm_polygons(fill = "white", col = NULL) +
   tm_cartogram_ncont(

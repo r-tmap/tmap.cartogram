@@ -52,6 +52,7 @@ projected CRS when basemaps are disabled.
 ## Contiguous cartograms
 
 ``` r
+
 Africa = World[World$continent == "Africa", ]
 
 tm_shape(Africa, crs = "+proj=robin") +
@@ -65,6 +66,7 @@ We can use polygon fill color to depict a variable, such as Happy Planet
 Index:
 
 ``` r
+
 tm_shape(Africa, crs = "+proj=robin") +
     tm_cartogram(size = "pop_est", 
                  fill = "life_exp",
@@ -79,6 +81,7 @@ tm_title("Life Expectancy")
 ## Non-contiguous cartograms
 
 ``` r
+
 tm_shape(Africa, crs = "+proj=robin") +
     tm_cartogram_ncont(size = "pop_est", options = opt_tm_cartogram_ncont())
 #> Cartogram in progress...
@@ -87,6 +90,7 @@ tm_shape(Africa, crs = "+proj=robin") +
 ![](cartograms_files/figure-html/unnamed-chunk-5-1.png)
 
 ``` r
+
 tm_shape(Africa, crs = "+proj=robin") +
     tm_cartogram_ncont(size = "pop_est", 
                        fill = "inequality",
@@ -103,6 +107,7 @@ A non-contiguous cartogram of the World. The countries are resized
 relative to population. The colors indicate carbon footprint.
 
 ``` r
+
 tm_shape(World, crs = "+proj=robin") +
   tm_polygons(fill = "white", col = NULL) +
   tm_cartogram_ncont(
@@ -126,6 +131,7 @@ tm_layout(earth_boundary = TRUE,
 ## Dorlin cartograms
 
 ``` r
+
 tm_shape(World, crs = "+proj=robin") +
     tm_polygons() +
     tm_cartogram_dorling(size = "pop_est", fill = "yellow")
@@ -138,6 +144,7 @@ We can the bubble fill color to show some other data, such as press
 freedom:
 
 ``` r
+
 tm_shape(World, crs = "+proj=robin") +
     tm_cartogram_dorling(size = "pop_est", 
                          fill = "press",
@@ -154,6 +161,7 @@ These maps are also available interactively. As noted above the trick in
 tmap is to disable basemaps. This can be done with `tm_basemap(NULL)`:
 
 ``` r
+
 tmap_mode("view")
 #> ℹ tmap modes "plot" - "view"
 #> ℹ toggle with `tmap::ttm()`
