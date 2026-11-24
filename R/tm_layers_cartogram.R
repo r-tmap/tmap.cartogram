@@ -10,9 +10,9 @@
 #'
 #' @param size,size.scale,size.legend,size.chart,size.free Visual variable that specifies the polygon sizes.
 #' @param plot.order Specification in which order the spatial features are drawn.
-#'   See [tmap:tm_plot_order()] for details.
+#'   See [tmap::tm_plot_order()] for details.
 #' @param options passed on to the corresponding `opt_<layer_function>` function
-#' @param ... passed on to `tmap:tm_polygons()`
+#' @param ... passed on to [tmap::tm_polygons()]
 #' @example examples/tm_cartogram.R
 #' @return a [tmap::tmap-element], supposed to be stacked after [tmap::tm_shape()] using the `+` operator. The `opt_<layer_function>` function returns a list that should be passed on to the `options` argument.
 #' @import tmap

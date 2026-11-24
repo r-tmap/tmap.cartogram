@@ -52,34 +52,34 @@ opt_tm_cartogram_dorling(type = "dorling", share = 5, itermax = 1000, ...)
 \item{size, size.scale, size.legend, size.chart, size.free}{Visual variable that specifies the polygon sizes.}
 
 \item{plot.order}{Specification in which order the spatial features are drawn.
-See [tmap:tm_plot_order()] for details.}
+See \code{\link[tmap:tm_plot_order]{tmap::tm_plot_order()}} for details.}
 
-\item{options}{passed on to the corresponding `opt_<layer_function>` function}
+\item{options}{passed on to the corresponding \verb{opt_<layer_function>} function}
 
-\item{...}{arguments passed on to [cartogram::cartogram_cont()]}
+\item{...}{arguments passed on to \code{\link[cartogram:cartogram_cont]{cartogram::cartogram_cont()}}}
 
 \item{type}{cartogram type, one of: "cont" for contiguous cartogram, "ncont" for non-contiguous cartogram and "dorling" for Dorling cartograms}
 
-\item{itermax, }{maximum number of iterations (see [cartogram::cartogram_cont()])}
+\item{itermax, }{maximum number of iterations (see \code{\link[cartogram:cartogram_cont]{cartogram::cartogram_cont()}})}
 
-\item{expansion}{factor expansion, see [cartogram::cartogram_ncont()] (argument `k`)}
+\item{expansion}{factor expansion, see \code{\link[cartogram:cartogram_ncont]{cartogram::cartogram_ncont()}} (argument \code{k})}
 
-\item{inplace}{should each polygon be modified in its original place? (`TRUE` by default)}
+\item{inplace}{should each polygon be modified in its original place? (\code{TRUE} by default)}
 
-\item{share}{share of the bounding box filled with the larger circle (see [cartogram::cartogram_dorling()] argument `k`)}
+\item{share}{share of the bounding box filled with the larger circle (see \code{\link[cartogram:cartogram_dorling]{cartogram::cartogram_dorling()}} argument \code{k})}
 }
 \value{
-a [tmap::tmap-element], supposed to be stacked after [tmap::tm_shape()] using the `+` operator. The `opt_<layer_function>` function returns a list that should be passed on to the `options` argument.
+a \link[tmap:tmap-element]{tmap::tmap-element}, supposed to be stacked after \code{\link[tmap:tm_shape]{tmap::tm_shape()}} using the \code{+} operator. The \verb{opt_<layer_function>} function returns a list that should be passed on to the \code{options} argument.
 }
 \description{
-Map layer that draws a cartogram. See details for types. It is recommended to specify a proper crs in [tmap::tm_shape()].
+Map layer that draws a cartogram. See details for types. It is recommended to specify a proper crs in \code{\link[tmap:tm_shape]{tmap::tm_shape()}}.
 }
 \details{
-In the contiguous cartogram polygons are distorted where the geographic relations are maintained. The algorithm by Dougenik et al. (1985) is used via [cartogram::cartogram_cont()].
+In the contiguous cartogram polygons are distorted where the geographic relations are maintained. The algorithm by Dougenik et al. (1985) is used via \code{\link[cartogram:cartogram_cont]{cartogram::cartogram_cont()}}.
 
-In the non-contiguous cartogram polygons are resized only. The used algorithm has been proposed by Olson (1976) and implemented in [cartogram::cartogram_ncont()].
+In the non-contiguous cartogram polygons are resized only. The used algorithm has been proposed by Olson (1976) and implemented in \code{\link[cartogram:cartogram_ncont]{cartogram::cartogram_ncont()}}.
 
-The Dorling cartogram (Dorling, 1996) generates proportional bubbles and is implemented in [cartogram::cartogram_dorling()].
+The Dorling cartogram (Dorling, 1996) generates proportional bubbles and is implemented in \code{\link[cartogram:cartogram_dorling]{cartogram::cartogram_dorling()}}.
 }
 \examples{
 library(tmap)
