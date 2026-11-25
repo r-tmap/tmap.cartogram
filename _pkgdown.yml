@@ -17,6 +17,10 @@ reference:
   contents:
   - tm_cartogram
 
+- title: Package overview
+  contents:
+  - tmap.cartogram-package
+
 navbar:
   structure:
     left:  [reference, intro, cont, ncont, dorling, news]
