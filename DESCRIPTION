@@ -19,9 +19,9 @@ Suggests:
     knitr,
     transformr,
     gifski
-Config/Needs/check: Nowosad/spDataLarge, lwgeom, r-tmap/tmap
+Config/Needs/check: Nowosad/spDataLarge, lwgeom, r-tmap/tmaptools, r-tmap/tmap
 Config/Needs/coverage: Nowosad/spDataLarge, lwgeom
-Config/Needs/website: bookdown, rmarkdown, r-tmap/tmap
+Config/Needs/website: bookdown, rmarkdown, r-tmap/tmaptools, r-tmap/tmap
 URL: https://github.com/r-tmap/tmap.cartogram, https://r-tmap.github.io/tmap.cartogram/
 BugReports: https://github.com/r-tmap/tmap.cartogram/issues
 Roxygen: list(markdown = TRUE)
