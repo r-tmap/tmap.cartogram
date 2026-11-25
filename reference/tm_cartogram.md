@@ -1,7 +1,8 @@
 # Map layer: cartogram
 
 Map layer that draws a cartogram. See details for types. It is
-recommended to specify a proper crs in \[tmap::tm_shape()\].
+recommended to specify a proper crs in
+[`tmap::tm_shape()`](https://r-tmap.github.io/tmap/reference/tm_shape.html).
 
 ## Usage
 
@@ -55,15 +56,17 @@ opt_tm_cartogram_dorling(type = "dorling", share = 5, itermax = 1000, ...)
 - plot.order:
 
   Specification in which order the spatial features are drawn. See
-  \[tmap:tm_plot_order()\] for details.
+  [`tmap::tm_plot_order()`](https://r-tmap.github.io/tmap/reference/tm_plot_order.html)
+  for details.
 
 - options:
 
-  passed on to the corresponding \`opt\_\<layer_function\>\` function
+  passed on to the corresponding `opt_<layer_function>` function
 
 - ...:
 
-  arguments passed on to \[cartogram::cartogram_cont()\]
+  arguments passed on to
+  [`cartogram::cartogram_cont()`](https://rdrr.io/pkg/cartogram/man/cartogram_cont.html)
 
 - type:
 
@@ -72,42 +75,49 @@ opt_tm_cartogram_dorling(type = "dorling", share = 5, itermax = 1000, ...)
 
 - itermax, :
 
-  maximum number of iterations (see \[cartogram::cartogram_cont()\])
+  maximum number of iterations (see
+  [`cartogram::cartogram_cont()`](https://rdrr.io/pkg/cartogram/man/cartogram_cont.html))
 
 - expansion:
 
-  factor expansion, see \[cartogram::cartogram_ncont()\] (argument
-  \`k\`)
+  factor expansion, see
+  [`cartogram::cartogram_ncont()`](https://rdrr.io/pkg/cartogram/man/cartogram_ncont.html)
+  (argument `k`)
 
 - inplace:
 
-  should each polygon be modified in its original place? (\`TRUE\` by
+  should each polygon be modified in its original place? (`TRUE` by
   default)
 
 - share:
 
   share of the bounding box filled with the larger circle (see
-  \[cartogram::cartogram_dorling()\] argument \`k\`)
+  [`cartogram::cartogram_dorling()`](https://rdrr.io/pkg/cartogram/man/cartogram_dorling.html)
+  argument `k`)
 
 ## Value
 
-a \[tmap::tmap-element\], supposed to be stacked after
-\[tmap::tm_shape()\] using the \`+\` operator. The
-\`opt\_\<layer_function\>\` function returns a list that should be
-passed on to the \`options\` argument.
+a
+[tmap::tmap-element](https://r-tmap.github.io/tmap/reference/tmap-element.html),
+supposed to be stacked after
+[`tmap::tm_shape()`](https://r-tmap.github.io/tmap/reference/tm_shape.html)
+using the `+` operator. The `opt_<layer_function>` function returns a
+list that should be passed on to the `options` argument.
 
 ## Details
 
 In the contiguous cartogram polygons are distorted where the geographic
 relations are maintained. The algorithm by Dougenik et al. (1985) is
-used via \[cartogram::cartogram_cont()\].
+used via
+[`cartogram::cartogram_cont()`](https://rdrr.io/pkg/cartogram/man/cartogram_cont.html).
 
 In the non-contiguous cartogram polygons are resized only. The used
 algorithm has been proposed by Olson (1976) and implemented in
-\[cartogram::cartogram_ncont()\].
+[`cartogram::cartogram_ncont()`](https://rdrr.io/pkg/cartogram/man/cartogram_ncont.html).
 
 The Dorling cartogram (Dorling, 1996) generates proportional bubbles and
-is implemented in \[cartogram::cartogram_dorling()\].
+is implemented in
+[`cartogram::cartogram_dorling()`](https://rdrr.io/pkg/cartogram/man/cartogram_dorling.html).
 
 ## References
 

@@ -50,7 +50,7 @@ tm_layout(earth_boundary = TRUE,
   bg.color = "#bbddff",
   space.color = "white")
 #> Cartogram in progress...
-#> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is FALSE
+#> Linking to GEOS 3.14.1, GDAL 3.12.2, PROJ 9.7.1; sf_use_s2() is FALSE
 ```
 
 ![](non_contiguous_files/figure-html/unnamed-chunk-6-1.png)
